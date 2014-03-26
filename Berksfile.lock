@@ -8,6 +8,9 @@
       "git": "git://github.com/daptiv/minitest-handler-cookbook.git",
       "ref": "e2e99b3866862b7e0348e74099af7b5954cff76b"
     },
+    "apt": {
+      "locked_version": "2.3.4"
+    },
     "java": {
       "locked_version": "1.22.0"
     },

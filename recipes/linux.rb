@@ -12,4 +12,5 @@
 
 node.override['java']['jdk_version'] = '7'
 
+include_recipe 'apt'
 include_recipe 'java'
