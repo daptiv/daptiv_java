@@ -1,5 +1,5 @@
 class TestWindowsJava < MiniTest::Chef::TestCase
-  
+
   include MiniTest::Chef::Assertions
 
   def test_java_home_set_for_current_process
