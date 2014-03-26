@@ -2,16 +2,11 @@ describe 'daptiv_java::windows' do
 
   let(:chef_run) do
     ChefSpec::Runner.new do |node|
-      # TODO set node values here
     end.converge(described_recipe)
   end
 
   it 'jdk version should be set to 7' do
     expect(chef_run.node['java']['jdk_version']).to eq('7')
-  end
-
-  it 'java_home env var is set' do
-    expect(ENV['JAVA_HOME']).to eq('C:\Program Files\Java\jdk1.7.0_21')
   end
 
   it 'java recipe is included' do

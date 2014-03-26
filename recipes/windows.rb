@@ -21,10 +21,13 @@ node.override['java']['windows']['checksum'] =
 # Use setx because the Chef env resource requires a re-login before being available
 execute 'set_java_home' do
   command "setx -m JAVA_HOME \"#{node['java']['home']}\""
-  only_if { true }
+  only_if { ENV['JAVA_HOME'] != node['java']['home'] }
 end
 
-# Set JAVA_HOME for this process
-ENV['JAVA_HOME'] = node['java']['home']
+ruby_block 'set_java_home_cur_process' do
+  block do
+    ENV['JAVA_HOME'] = node['java']['home']
+  end
+end
 
 include_recipe 'java'
