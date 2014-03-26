@@ -22,3 +22,11 @@ end
 
 Tailor::RakeTask.new
 Vagrant::RakeTask.new
+
+Vagrant::RakeTask.new :vagrant_windows, 'Runs the Windows recipe' do |t|
+  t.environment = { linux: false }
+end
+
+Vagrant::RakeTask.new :vagrant_linux, 'Runs the Linux recipe' do |t|
+  t.environment = { linux: true }
+end
