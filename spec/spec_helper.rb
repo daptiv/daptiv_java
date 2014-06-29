@@ -22,4 +22,9 @@ RSpec.configure do |config|
   config.platform = 'windows'
   config.version = '2008R2'
 
+  # Workaround until https://github.com/opscode-cookbooks/windows/pull/78
+  config.before(:each) do
+    stub_const('File::ALT_SEPARATOR', '\\')
+  end
+
 end
