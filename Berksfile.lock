@@ -3,6 +3,9 @@
     "daptiv_java": {
       "path": "."
     },
+    "minitest-handler": {
+      "locked_version": "1.3.2"
+    },
     "apt": {
       "locked_version": "2.6.0"
     },
