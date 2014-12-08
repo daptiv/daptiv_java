@@ -5,8 +5,8 @@ Vagrant.configure("2") do |config|
 
   if @linux
     @install_method = ENV['install_method'] || 'binary'
-    config.vm.box_url = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.2.0.box'
-    config.vm.box = 'opscode_ubuntu-12.04_chef-11.2.0'
+    config.vm.box_url = 'http://vagrantboxes.hq.daptiv.com/vagrant/boxes/virtualbox_ubuntu-12.04_chef-11.12.4_1.0.5.box'
+    config.vm.box = 'virtualbox_ubuntu-12.04_chef-11.12.4_1.0.5'
   else
     @install_method = 'windows'
     config.vm.box_url = 'http://vagrantboxes.hq.daptiv.com/vagrant/boxes/vagrant-windows2008r2.box'
