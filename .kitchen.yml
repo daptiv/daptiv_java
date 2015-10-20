@@ -1,0 +1,26 @@
+---
+driver:
+  name: vagrant
+  provider: virtualbox
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+    driver:
+      box: virtualbox_ubuntu-14.04_chef-12.4.1_1.0.7
+      box_url: http://vagrantboxes.hq.daptiv.com/vagrant/boxes/virtualbox_ubuntu-14.04_chef-12.4.1_1.0.7.box
+  - name: windows2012r2
+    driver:
+      box: daptiv/windows2012r2_chef11
+    driver_config:
+      communicator: winrm
+    transport:
+      name: winrm
+
+suites:
+  - name: default
+    run_list:
+      - recipe[daptiv_java::default]
+      - recipe[minitest-handler::default]
