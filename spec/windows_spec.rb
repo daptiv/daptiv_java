@@ -1,7 +1,6 @@
 describe 'daptiv_java::windows' do
-
   let(:chef_run) do
-    ChefSpec::SoloRunner.new do |node|
+    ChefSpec::ServerRunner.new do |node|
     end.converge(described_recipe)
   end
 
@@ -29,7 +28,8 @@ describe 'daptiv_java::windows' do
   end
 
   it 'setx is called with java home' do
-    expect(chef_run).to run_execute('setx -m JAVA_HOME "C:\Program Files\Java\jdk1.7.0_21"')
+    expect(chef_run).to run_execute(
+      'setx -m JAVA_HOME "C:\Program Files\Java\jdk1.7.0_21"'
+    )
   end
-
 end
