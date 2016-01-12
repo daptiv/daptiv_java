@@ -7,9 +7,12 @@
 *.un~
 /cookbooks
 version.txt
-Berksfile.lock
 NUL
+
 # Bundler
 bin/*
 .bundle/*
 
+# Kitchen
+.kitchen/*
+Berksfile.lock
