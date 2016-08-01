@@ -13,7 +13,7 @@
 node.override['java']['jdk_version'] = '7'
 node.override['java']['java_home'] = 'C:\Program Files\Java\jdk1.7.0_21'
 node.override['java']['windows']['url'] =
-  'http://vagrantboxes.hq.daptiv.com/vagrant/jdk-7u21-windows-x64.exe'
+  'http://artrepo.daptiv.com:8081/artifactory/installs/vagrant/jdk-7u21-windows-x64.exe'
 node.override['java']['windows']['package_name'] =
   'Java SE Development Kit 7 Update 21 (64-bit)'
 node.override['java']['windows']['checksum'] =

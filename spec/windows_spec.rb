@@ -14,7 +14,7 @@ describe 'daptiv_java::windows' do
 
   it 'url is set to internal daptiv url' do
     expect(chef_run.node['java']['windows']['url']).to eq(
-      'http://vagrantboxes.hq.daptiv.com/vagrant/jdk-7u21-windows-x64.exe')
+      'http://artrepo.daptiv.com:8081/artifactory/installs/vagrant/jdk-7u21-windows-x64.exe')
   end
 
   it 'checksum is set' do
