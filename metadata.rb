@@ -6,6 +6,8 @@ description ''
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 ver_path = File.join(File.dirname(__FILE__), 'version.txt')
 version File.exist?(ver_path) ? IO.read(ver_path).chomp : '1.0.0'
+issues_url 'https://github.com/daptiv/daptiv_java/issues'
+source_url 'https://github.com/daptiv/daptiv_java/'
 supports 'ubuntu'
 supports 'windows'
 depends 'apt'

@@ -2,7 +2,7 @@ require_relative 'spec_helper_linux'
 
 describe 'daptiv_java::linux' do
   let(:chef_run) do
-    ChefSpec::ServerRunner.new do |node|
+    ChefSpec::ServerRunner.new do
     end.converge(described_recipe)
   end
 
