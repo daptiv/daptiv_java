@@ -17,7 +17,7 @@ provisioner:
   name: chef_zero
 
 transport:
-  name: winrm
+  # name: winrm
   username: <%= ENV['SSH_USER'] %>
   password: <%= ENV['SSH_PASS'] %>
 
