@@ -51,4 +51,5 @@ suites:
     data_bags_path: <%= ENV['CHEF_DATA_BAGS'] %>
     encrypted_data_bag_secret_key_path: <%= ENV['CHEF_SECRET_FILE'] %>
     run_list:
-      - recipe[test_docker::default]
+      - recipe[daptiv_java::default]
+      - recipe[minitest-handler::default]
