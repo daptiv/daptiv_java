@@ -10,6 +10,7 @@ driver:
   availability_zone: <%= ENV['EC2_AZ'] %>
   subnet_id: <%= ENV['EC2_SUBNET_ID'] %>
   security_group_ids: [<%= ENV['EC2_SG'] %>]
+  retryable_tries: 120
 
 provisioner:
   name: chef_zero
