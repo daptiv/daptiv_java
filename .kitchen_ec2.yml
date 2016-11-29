@@ -5,6 +5,7 @@ driver:
     "Name": <%= ENV['COOKBOOK'] %>
   }
   aws_ssh_key_id: <%= ENV['EC2_SSH_KEY_ID'] %>
+  instance_type: <%= ENV['EC2_INSTANCE_TYPE'] %>
   region: <%= ENV['EC2_REGION'] %>
   availability_zone: <%= ENV['EC2_AZ'] %>
   subnet_id: <%= ENV['EC2_SUBNET_ID'] %>
@@ -23,26 +24,26 @@ transport:
 
 platforms:
   - name: ubuntu
-    instance_type: <%= ENV['EC2_INSTANCE_TYPE'] %>
-    image_id: <%= ENV['EC2_UBUNTU_AMI'] %>
-    block_device_mappings:
-      - device_name: /dev/sda1
-        ebs:
-          delete_on_termination: true
+    driver:
+      image_id: <%= ENV['EC2_UBUNTU_AMI'] %>
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            delete_on_termination: true
   - name: windows
-    instance_type: <%= ENV['EC2_INSTANCE_TYPE'] %>
-    image_id: <%= ENV['EC2_AMI'] %>
     driver_config:
       communicator: winrm
     transport:
       name: winrm
-    block_device_mappings:
-      - device_name: /dev/sda1
-        ebs:
-          delete_on_termination: true
-      - device_name: /dev/sdf
-        ebs:
-          delete_on_termination: true
+    driver:
+      image_id: <%= ENV['EC2_AMI'] %>
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            delete_on_termination: true
+        - device_name: /dev/sdf
+          ebs:
+            delete_on_termination: true
 
 suites:
   - name: <%= ENV['COOKBOOK'] %>
