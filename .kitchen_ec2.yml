@@ -32,6 +32,10 @@ platforms:
   - name: windows
     instance_type: <%= ENV['EC2_INSTANCE_TYPE'] %>
     image_id: <%= ENV['EC2_AMI'] %>
+    driver_config:
+      communicator: winrm
+    transport:
+      name: winrm
     block_device_mappings:
       - device_name: /dev/sda1
         ebs:
