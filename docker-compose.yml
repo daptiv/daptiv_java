@@ -1,9 +1,6 @@
 # How to use this file:
-#
-# export COOKBOOK=${PWD##*/}
-# docker-compose run --rm test chef exec bundle install --deployment --path ./.bundle/vendor
-# docker-compose run --rm test chef exec bundle exec rake
-# docker-compose run --rm test chef exec kitchen test
+# export COOKBOOK=${PWD##*/} && docker-compose run --rm test chef exec rake
+
 version: '2'
 services:
   test:
@@ -13,7 +10,9 @@ services:
       - ${CHEF_CONFIG_DIR}:/root/.chef
       - ${CHEF_REPO_DIR}:/chef-repo
       - ${AWS_CRED_DIR}:/root/.aws
+      - ${SSH_KEY_DIR}:/root/.ssh
     working_dir: /${COOKBOOK}
+    network_mode: "host"
     environment:
       COOKBOOK: ${COOKBOOK}
       EC2_SSH_KEY_ID: ${EC2_SSH_KEY_ID}
@@ -22,6 +21,7 @@ services:
       EC2_SUBNET_ID: ${EC2_SUBNET_ID}
       EC2_INSTANCE_TYPE: ${EC2_INSTANCE_TYPE}
       EC2_AMI: ${EC2_AMI}
+      EC2_UBUNTU_AMI: ${EC2_UBUNTU_AMI}
       EC2_SG: ${EC2_SG}
       LATEST_PPM_PACKAGE: ${LATEST_PPM_PACKAGE}
       CHEF_DATA_BAGS: /chef-repo/data_bags
@@ -30,8 +30,9 @@ services:
       KNIFE_HOME: /root/.chef
       SSH_USER: ${SSH_USER}
       SSH_PASS: ${SSH_PASS}
+      SSH_KEY: /root/.ssh/${SSH_KEY}
     command: |
       bash -c 'bash -s <<EOF
       echo "Please enter the command to execute:"
-      echo "Ex: docker-compose run --rm test chef exec bundle install"
+      echo "Ex: docker-compose run --rm test chef exec rake"
       EOF'
