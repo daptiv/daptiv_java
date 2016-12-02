@@ -30,6 +30,8 @@ services:
       KNIFE_HOME: /root/.chef
       SSH_USER: ${SSH_USER}
       SSH_PASS: ${SSH_PASS}
+      WIN_USER: ${WIN_USER}
+      WIN_PASS: ${WIN_PASS}
       SSH_KEY: /root/.ssh/${SSH_KEY}
     command: |
       bash -c 'bash -s <<EOF
