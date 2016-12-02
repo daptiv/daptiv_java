@@ -31,10 +31,11 @@ platforms:
       username: <%= ENV['SSH_USER'] %>
       ssh_key: <%= ENV['SSH_KEY'] %>
   - name: windows
-    # driver_config:
-      # communicator: winrm
+    driver_config:
+      communicator: winrm
     transport:
       name: winrm
+      winrm_transport: negotiate
       username: <%= ENV['WIN_USER'] %>
       password: <%= ENV['WIN_PASS'] %>
     driver:
