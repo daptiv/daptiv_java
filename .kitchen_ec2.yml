@@ -18,11 +18,6 @@ provisioner:
   client_rb:
     environment: cookbook_ci
 
-transport:
-  name: ssh
-  username: <%= ENV['SSH_USER'] %>
-  ssh_key: <%= ENV['SSH_KEY'] %>
-
 platforms:
   - name: ubuntu
     driver:
@@ -31,11 +26,17 @@ platforms:
         - device_name: /dev/sda1
           ebs:
             delete_on_termination: true
+    transport:
+      name: ssh
+      username: <%= ENV['SSH_USER'] %>
+      ssh_key: <%= ENV['SSH_KEY'] %>
   - name: windows
     driver_config:
       communicator: winrm
     transport:
       name: winrm
+      username: <%= ENV['WIN_USER'] %>
+      password: <%= ENV['WIN_PASS'] %>
     driver:
       image_id: <%= ENV['EC2_AMI'] %>
       block_device_mappings:
