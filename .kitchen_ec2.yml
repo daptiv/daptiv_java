@@ -35,7 +35,7 @@ platforms:
       communicator: winrm
     transport:
       name: winrm
-      winrm_transport: negotiate
+      winrm_transport: basic
       username: <%= ENV['WIN_USER'] %>
       password: <%= ENV['WIN_PASS'] %>
     driver:
