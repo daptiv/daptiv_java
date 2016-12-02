@@ -39,6 +39,8 @@ platforms:
       password: <%= ENV['WIN_PASS'] %>
     driver:
       image_id: <%= ENV['EC2_AMI'] %>
+      username: <%= ENV['WIN_USER'] %>
+      password: <%= ENV['WIN_PASS'] %>
       block_device_mappings:
         - device_name: /dev/sda1
           ebs:
