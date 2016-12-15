@@ -8,7 +8,7 @@ task default: [:version, :rubocop, :foodcritic, :spec, :kitchen]
 task nokitchen: [:version, :rubocop, :foodcritic, :spec]
 
 task :version do
-  version = ENV['BUILD_NUMBER'] ? "0.0.#{ENV['BUILD_NUMBER']}" : '0.0.1'
+  version = ENV['BUILD_NUMBER'] ? "1.0.#{ENV['BUILD_NUMBER']}" : '0.0.1'
   IO.write('version.txt', version)
 end
 
