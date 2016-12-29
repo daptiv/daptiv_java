@@ -20,16 +20,16 @@ provisioner:
 
 platforms:
   - name: ubuntu
+    transport:
+      name: ssh
+      username: <%= ENV['SSH_USER'] %>
+      ssh_key: <%= ENV['SSH_KEY'] %>
     driver:
       image_id: <%= ENV['EC2_UBUNTU_AMI'] %>
       block_device_mappings:
         - device_name: /dev/sda1
           ebs:
             delete_on_termination: true
-    transport:
-      name: ssh
-      username: <%= ENV['SSH_USER'] %>
-      ssh_key: <%= ENV['SSH_KEY'] %>
   - name: windows
     transport:
       name: winrm
