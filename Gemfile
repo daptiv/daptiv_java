@@ -14,3 +14,4 @@ gem 'minitest-chef-handler'
 gem 'test-kitchen'
 gem 'chef-provisioning-vsphere'
 gem 'dep_selector'
+gem 'codecov', :require => false, :group => :test
