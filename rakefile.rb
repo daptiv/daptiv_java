@@ -4,6 +4,12 @@ rescue Gem::LoadError
   sh 'chef gem install minitest-chef-handler'
 end
 
+begin
+  gem 'codecov'
+rescue Gem::LoadError
+  sh 'chef gem install codecov'
+end
+
 task default: [:version, :rubocop, :foodcritic, :spec, :kitchen]
 task nokitchen: [:version, :rubocop, :foodcritic, :spec]
 
