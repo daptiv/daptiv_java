@@ -6,7 +6,7 @@ SimpleCov.start
 
 require 'codecov'
 SimpleCov.formatter = SimpleCov::Formatter::Codecov
-  
+
 ChefSpec::Coverage.start!
 
 RSpec.configure do |config|
