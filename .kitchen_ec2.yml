@@ -25,7 +25,8 @@ platforms:
       username: <%= ENV['SSH_USER'] %>
       ssh_key: <%= ENV['SSH_KEY'] %>
     driver:
-      image_id: <%= ENV['EC2_UBUNTU_AMI'] %>
+      image_search:
+        "name": <%= ENV['EC2_UBUNTU_IMAGE_NAME'] %>
       block_device_mappings:
         - device_name: /dev/sda1
           ebs:
@@ -36,7 +37,8 @@ platforms:
       username: <%= ENV['WIN_USER'] %>
       password: <%= ENV['WIN_PASS'] %>
     driver:
-      image_id: <%= ENV['EC2_AMI'] %>
+      image_search:
+        "name": <%= ENV['EC2_IMAGE_NAME'] %>
       block_device_mappings:
         - device_name: /dev/sda1
           ebs:
