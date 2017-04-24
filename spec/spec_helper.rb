@@ -1,11 +1,6 @@
+require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'
-
-require 'simplecov'
-SimpleCov.start
-
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 ChefSpec::Coverage.start!
 
