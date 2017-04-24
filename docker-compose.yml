@@ -11,9 +11,13 @@ services:
       - ${CHEF_REPO_DIR}:/chef-repo
       - ${AWS_CRED_DIR}:/root/.aws
       - ${SSH_KEY_DIR}:/root/.ssh
+      - ${BERKSHELF_PATH}:/root/.berkshelf/
     working_dir: /${COOKBOOK}
     network_mode: "host"
     environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      EC2_ROLE_ARN: ${EC2_ROLE_ARN}
       COOKBOOK: ${COOKBOOK}
       EC2_SSH_KEY_ID: ${EC2_SSH_KEY_ID}
       EC2_REGION: ${EC2_REGION}
