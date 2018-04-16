@@ -35,5 +35,4 @@ services:
       WIN_USER: ${WIN_USER}
       WIN_PASS: ${WIN_PASS}
       SSH_KEY: /root/.ssh/${SSH_KEY}
-      CODECOV_TOKEN: ${CODECOV_TOKEN}
     command: "'chef exec rake'"
