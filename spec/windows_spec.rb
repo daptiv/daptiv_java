@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 describe 'daptiv_java::windows' do
   let(:chef_run) do
     ChefSpec::ServerRunner.new do

@@ -3,7 +3,7 @@
 # Cookbook Name:: daptiv_java
 # Attribute:: default
 #
-# Copyright (c) 2014 Daptiv Solutions LLC.
+# Copyright (c) 2018 Changepoint
 #
 # All rights reserved - Do Not Redistribute
 #
