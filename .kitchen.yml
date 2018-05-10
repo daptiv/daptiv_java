@@ -1,25 +1,61 @@
 ---
 driver:
-  name: vagrant
-  provider: virtualbox
+  name: ec2
+  require_chef_omnibus: <%= ENV['REQUIRE_CHEF_OMNIBUS'] %>
+  tags: {
+    "Name": <%= ENV['COOKBOOK'] %>
+  }
+  aws_ssh_key_id: <%= ENV['EC2_SSH_KEY_ID'] %>
+  instance_type: <%= ENV['EC2_INSTANCE_TYPE'] %>
+  region: <%= ENV['EC2_REGION'] %>
+  availability_zone: <%= ENV['EC2_AZ'] %>
+  subnet_id: <%= ENV['EC2_SUBNET_ID'] %>
+  security_group_ids: [<%= ENV['EC2_SG'] %>]
+  retryable_tries: 120
 
 provisioner:
   name: chef_zero
+  environments_path: test/environments
+  client_rb:
+    environment: cookbook_ci
 
 platforms:
-  - name: ubuntu-14.04-virtualbox
+  - name: ubuntu
+    transport:
+      name: ssh
+      username: <%= ENV['SSH_USER'] %>
+      ssh_key: <%= ENV['SSH_KEY'] %>
     driver:
-      box_url: 'http://artrepo.daptiv.com:8081/artifactory/vagrant-local/virtualbox_ubuntu-14.04_chef-12.4.1_1.0.13.box'
-  - name: windows2012r2_chef12
-    driver:
-      box_url: 'http://artrepo.daptiv.com:8081/artifactory/vagrant-local/virtualbox_windows-2012r2_chef-12.5.1_1.0.23.box'
-    driver_config:
-      communicator: winrm
+      image_search:
+        "name": <%= ENV['EC2_UBUNTU_IMAGE_NAME'] %>
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            delete_on_termination: true
+  - name: windows
     transport:
       name: winrm
+      username: <%= ENV['WIN_USER'] %>
+      password: <%= ENV['WIN_PASS'] %>
+    driver:
+      image_search:
+        "name": <%= ENV['EC2_IMAGE_NAME'] %>
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            volume_type: standard
+            volume_size: 40
+            delete_on_termination: true
+        - device_name: /dev/sdf
+          ebs:
+            volume_type: standard
+            volume_size: 20
+            delete_on_termination: true
 
 suites:
-  - name: default
+  - name: <%= ENV['COOKBOOK'] %>
+    data_bags_path: <%= ENV['CHEF_DATA_BAGS'] %>
+    encrypted_data_bag_secret_key_path: <%= ENV['CHEF_SECRET_FILE'] %>
     run_list:
       - recipe[daptiv_java::default]
       - recipe[minitest-handler::default]
